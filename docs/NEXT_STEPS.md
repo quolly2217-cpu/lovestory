@@ -28,7 +28,9 @@
 - v6는 "MV 그림체(광택·파스텔)", 최신 문서는 "실사에 가까운, 과한 파스텔 금지". 톤이 바뀌었을 수 있으니 첫 컷에서 사용자에게 확인.
 - v6는 60.8~67.8, 랩 구간을 "비워둘 구간"으로 지정 → 최신 GAP 02(59~77)와 겹침. 비워둘지 사용자 확인.
 
-## 별도: 가사 하이라이트 영상 (2026-11-03)
-- `tools/lyric_video.py` — 이미지 1장 + LRC 가사(+노래) → 배경 살짝 줌/이동 + 현재 줄 보라 바 하이라이트·스크롤 mp4.
-  Python(Pillow, numpy) + ffmpeg. 예: `python tools/lyric_video.py --image bg.png --lyrics song.lrc --audio song.mp3 --out lyric.mp4`
-- 아직 실제 제작 요청 없음 (사용자는 방식만 문의). 만들려면: 가사 없는 원본 이미지, 가사 LRC(타이밍), 노래 파일 필요.
+## 별도: 가사 하이라이트 영상 (2026-11-03) — 사용자가 집에서 다시 요청 예정
+- 방식: 이미지 1장 + 노래 + 가사(LRC 타이밍) → 배경 살짝 줌/이동 + 현재 줄 보라 바 하이라이트·스크롤 mp4.
+  Python(Pillow, numpy) + ffmpeg. 클라우드 세션에서 전부 가능 (PC 불필요).
+- 스크립트는 사용자 요청으로 삭제함. 복원: `git checkout a3937e7 -- tools/lyric_video.py`
+- 클라우드 한글 폰트: jsdelivr 차단 → `npm pack pretendard@1.3.9` 로 Pretendard otf 확보.
+- 요청 오면: 새 이미지·노래·가사 받기 → 타이밍(LRC) 작성 → 10~20초 미리보기 승인 → 전체 렌더.
